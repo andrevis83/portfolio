@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
@@ -8,17 +8,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#101010',
-        
+        'primary': '#101010',      
       },
-      animation: {
-        wiggle: 'wiggle 5s ease-in-out infinite'
+      fontFamily: {
+        'anton': ['Anton', ...defaultTheme.fontFamily.sans],
       },
-      keyframes: {
-        wiggle: {
-          '0%, 100%': { color: colors.indigo['50'] },
-          '50%': { color: colors.indigo['500'] },
-        }
+      minWidth: {
+        '5': '5px',
+      },
+      spacing: {
+        '1/5': '20%',
       },
       zIndex: {
         '1000': '1000',

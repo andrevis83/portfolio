@@ -1,5 +1,7 @@
 import NavLink from "./NavLink";
 
+import { variantsLogo, variantsNavlinks } from "../assets/variants";
+
 const Navbar = () => {
 
     return (
@@ -10,19 +12,16 @@ const Navbar = () => {
                         href="/" 
                         childrenClassName="text-cyan-50" 
                         childrenText="Andrea Visentini" 
+                        variants={variantsLogo}
                     />
     
                 </div>
-                <div>
-                    <NavLink 
-                            href="/about" 
-                            childrenClassName="mr-4 text-cyan-50" 
-                            childrenText="About" 
-                            />
+                <div className="flex">
                     <NavLink 
                         href="/works" 
                         childrenClassName="text-cyan-50" 
                         childrenText="Works" 
+                        variants={variantsNavlinks()}
                     />                   
                 </div>
             </div>

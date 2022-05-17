@@ -1,18 +1,21 @@
 import Link from "next/link";
 import PropTypes from 'prop-types'
 
-import LetterAnimated from "./LetterAnimated";
+import LetterAnimated from "../LetterAnimated";
 
-const NavLink = props => {
 
-    const { href, childrenClassName, childrenText } = props
+
+const NavLink = ({ href, childrenClassName, childrenText, variants }) => {
 
     return (
         <Link href={href} passHref >
-            <LetterAnimated 
-                className={ childrenClassName ? childrenClassName : '' } 
-                text={ childrenText ? childrenText : '' } 
-            />
+            <a href={href} className={`${ childrenClassName ? childrenClassName : '' }`} >
+                <LetterAnimated 
+                    className={ childrenClassName ? childrenClassName : '' } 
+                    text={ childrenText ? childrenText : '' } 
+                    variants = {variants}
+                />
+            </a>
         </Link>
     )
 }
