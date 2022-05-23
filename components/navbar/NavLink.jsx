@@ -5,11 +5,11 @@ import LetterAnimated from "../LetterAnimated";
 
 
 
-const NavLink = ({ href, childrenClassName, childrenText, variants }) => {
+const NavLink = ({ external = false, href, childrenClassName, childrenText, variants }) => {
 
     return (
-        <Link href={href} passHref >
-            <a href={href} className={`${ childrenClassName ? childrenClassName : '' }`} >
+        <Link  href={href} passHref scroll={false}>
+            <a href={href} className={`${ childrenClassName ? childrenClassName : '' }`} target={ external ? "_blank" : "_self"}>
                 <LetterAnimated 
                     className={ childrenClassName ? childrenClassName : '' } 
                     text={ childrenText ? childrenText : '' } 
@@ -21,6 +21,7 @@ const NavLink = ({ href, childrenClassName, childrenText, variants }) => {
 }
 
 NavLink.propTypes = {
+    external: PropTypes.bool,
     href: PropTypes.string,
     childrenClassName: PropTypes.string,
     childrenText: PropTypes.string,

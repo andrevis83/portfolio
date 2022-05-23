@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion'
 
-const Divider = ({className, delay = 0}) => {
+const Divider = ({className, classNameContainer = 'mx-auto my-16', delay = 0}) => {
 
     const variantsDivider = {
         initial: {
             scaleX: 0,
-            boxShadow: ''
         },
         animate: {
             scaleX: 1,
@@ -25,21 +24,24 @@ const Divider = ({className, delay = 0}) => {
     });
 
 
-    useEffect(() => {
-        if (inView) {
-            animation.start('animate');
-        } else {
-            animation.start('initial');
-        }
+    useEffect(() => { 
+            if ( inView ) {
+                animation.start('animate');
+            } else {
+                animation.start('initial');
+            }
+
+        
     }, [inView])
 
 
     return (
-        <div className="w-fit mx-auto my-16" ref={ref}>
+        <div className={`${classNameContainer}`} ref={ref}>
             <motion.hr 
                 className={`${className}`} 
                 variants={variantsDivider} 
-                animate={animation} 
+                initial="initial"
+                animate={ animation } 
                 style={{ originX: 0 }}
             />
         </div>
@@ -48,7 +50,8 @@ const Divider = ({className, delay = 0}) => {
 
 Divider.propTypes = {
     className: PropTypes.string,
-    delay: PropTypes.number
+    classNameContainer: PropTypes.string,
+    delay: PropTypes.number,
 }
 
 export default Divider

@@ -24,7 +24,6 @@ export const home = {
     getInTouch: "Currently I'm available for projects, job offers or hiring. So, get in touch.",
     about: "Hi everyone. I grew up with a passion for mathematic, electronics and information technology.",
     about_2: "Since 2017 I have been working as a web developer, creating Wordpress themes from scratch and web apps with React.",
-    scroll: "Scroll to know me",
     skillsTech: "I use the most famous libraries to build a performant and elegant site or app: Bootstrap, Tailwind and Material-UI for the style; Gsap and Framer motion for the animations.",
     skillsTech_2: "These are some of the technologies that I used during my works:"
 }
@@ -155,4 +154,25 @@ export const skills = [
         title: "CMS",
         description: "The CMS used to build and deploy websites and e-commerce."
     }
+]
+
+export const projects = [
+    {
+        id: "edizioni-igpi",
+        image: {
+            path: "/images/igpi_home.png",
+            width: "1600",
+            height: "900",    
+        },
+        title: "Edizioni studio IGPI"
+    }, 
+    {
+        id: "dpc-computer",
+        image: {
+            path: "/images/dpc_home.png",
+            width: "1600",
+            height: "900",
+        },
+        title: "DPC Computer"
+    },
 ]

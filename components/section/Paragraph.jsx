@@ -6,15 +6,17 @@ import { useInView } from 'react-intersection-observer';
 const Paragraph = ({className, delay = 0, onComplete, scrollAnimation = false, text}) => {
 
     const variantsParagraph = {
-        initial: { opacity: 0, y: 32},
+        initial: { opacity: 0, rotateX: -15, y: 32},
         animate: { 
-          opacity: 1, 
-          originX: 1,
-          y: 0,
-          transition: { 
-              opacity: {duration: 0.75, delay: delay, ease: "easeOut"},
-              y: {duration: 0.75, delay: delay, ease: "easeOut"}
-          }
+            opacity: 1, 
+            originY: 1,
+            rotateX: 0,
+            y: 0,
+            transition: { 
+                duration: 0.75, 
+                delay: delay,
+                ease: "easeOut"
+            }
         }
     }
 
@@ -35,14 +37,14 @@ const Paragraph = ({className, delay = 0, onComplete, scrollAnimation = false, t
     
     const paragraphOnScroll = () => {
         return(
-            <motion.div 
-                className={`w-full mx-auto ${className}`}
-                variants={variantsParagraph} 
-                animate={animation}
-                ref={ref}
-            >
-                <span>{ text }</span>
-            </motion.div>
+                <motion.div 
+                    className={`w-full mx-auto ${className}`}
+                    variants={variantsParagraph} 
+                    animate={animation}
+                    ref={ref}
+                >
+                    <span>{ text }</span>
+                </motion.div>
         )
     }
 
@@ -61,9 +63,9 @@ const Paragraph = ({className, delay = 0, onComplete, scrollAnimation = false, t
     }
 
     return (
-        <>
+        <div className="[perspective:1000px]">
             { scrollAnimation ? paragraphOnScroll() : paragraphStatic() }
-        </>
+        </div>
     )
 }
 

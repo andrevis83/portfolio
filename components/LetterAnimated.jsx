@@ -15,7 +15,7 @@ const DEFAULT_VARIANTS = {
   })
 }
 
-const LetterAnimated = forwardRef(({text, variants = DEFAULT_VARIANTS, observer = false }, ref) => {
+const LetterAnimated = forwardRef(({className, exit = false, observer = false, text, variants = DEFAULT_VARIANTS }, ref) => {
 
     const letters = text.split('');
     
@@ -24,7 +24,6 @@ const LetterAnimated = forwardRef(({text, variants = DEFAULT_VARIANTS, observer 
         threshold: 1,
         triggerOnce: true
     });
-
 
     useEffect(() => { 
         if ( observer && inView) {
@@ -35,10 +34,8 @@ const LetterAnimated = forwardRef(({text, variants = DEFAULT_VARIANTS, observer 
     }, [inView])
 
 
-
-
     return (
-      <div className="overflow-hidden" ref={ observer ? refInview : null }>
+      <div className={`${className} overflow-hidden`} ref={ observer ? refInview : null }>
         { letters && letters.map( (letter, index) => {
           return (
             <motion.span 
@@ -47,7 +44,8 @@ const LetterAnimated = forwardRef(({text, variants = DEFAULT_VARIANTS, observer 
               variants={variants}
               initial="initial"
               animate={ observer ? animation : "animate"}
-              key={ index }
+              exit={ exit ? "exit" : null}
+              key={ `${text}--${index}` }
             >
               { letter }
             </motion.span>
@@ -59,8 +57,10 @@ const LetterAnimated = forwardRef(({text, variants = DEFAULT_VARIANTS, observer 
 
 LetterAnimated.propTypes = {
   className: PropTypes.string,
-  href: PropTypes.string,
+  exit: PropTypes.bool,
+  observer: PropTypes.bool,
   text: PropTypes.string,
+  variants: PropTypes.object
 }
 
 export default LetterAnimated;

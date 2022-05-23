@@ -20,18 +20,21 @@ const variantCtaContainer = {
     }
 }
   
-const variantCtaLetters = {
-    initial: { letterSpacing: '0.1em', opacity: 0 },
-    animate: i => ({ 
-        letterSpacing: ['0.1em', '0.5em', '0.1em'],
-        opacity: 1,
-        transition:{ 
-            default: {
-              duration: 0.75, 
-              delay: 2 + (i * 0.05)
-            },
-        }
-    })
+const variantCtaLetters = (delay = 2, duration = 0.75) => {
+    
+    return { 
+        initial: { letterSpacing: '0.1em', opacity: 0 },
+        animate: i => ({ 
+            letterSpacing: ['0.1em', '0.5em', '0.1em'],
+            opacity: 1,
+            transition:{ 
+                default: {
+                duration, 
+                delay: delay + (i * 0.05)
+                },
+            }
+        })
+    }
 }
 
 const variantsLogo = {
@@ -44,7 +47,7 @@ const variantsLogo = {
     })
 }
 
-const variantsNavlinks = (delay = -1) => {
+const variantsNavlinks = (delay = 3, duration = 0.5) => {
 
     return {
         initial: { y: -16, opacity: 0 },
@@ -53,34 +56,23 @@ const variantsNavlinks = (delay = -1) => {
             opacity: 1, 
             transition:{ 
                 default: {
-                    duration: 0.5, 
-                    delay: delay < 0 ?  3 + (i * 0.05) : delay + (i * 0.05)
+                    duration, 
+                    delay: delay + (i * 0.05)
                 },
             }
-        })
+        }),
+        exit: { y: -16, opacity: 0 }
     }
 }
 
-const variantsProjectImage = {
-    initial: { scale: 0.85 },
-    animate: {
-        scale: 1.15,
-        transition: {
-            delay: 0.5,
-            duration: 1.5,
-            ease: "easeOut"
-        }
-    }
-}
-
-const variantsProjectSlide = (delay = 0.5) => {
+const variantsProjectSlide = (delay = 0.5,  duration = 0.5) => {
     return  {
         initial: { y: 0 },
         animate: {
             y: '100%',
             transition: {
                 delay: delay,
-                duration: 1,
+                duration,
                 ease: "easeOut"
             }
         }
@@ -94,7 +86,6 @@ export {
     variantCtaLetters,
     variantsLogo,
     variantsNavlinks,
-    variantsProjectImage,
     variantsProjectSlide
 }
   

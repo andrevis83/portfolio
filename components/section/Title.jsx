@@ -2,8 +2,18 @@ import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion'
+import { Divider } from './'
 
-const Title = ({duration = 0.75, fontSize = 'text-4xl', text}) => {
+const Title = (props) => {
+
+    const {
+        color = 'text-indigo-600', 
+        colorUnderline = 'from-indigo-700 via-indigo-700/60',
+        duration = 1.25, 
+        fontSize = 'text-4xl', 
+        text, 
+        underlined = true
+    } = props;
 
     const variantsHeroTitle = {
         initial: {
@@ -19,6 +29,7 @@ const Title = ({duration = 0.75, fontSize = 'text-4xl', text}) => {
     
     const animation = useAnimation();
     const [ ref, inView ] = useInView({
+        threshold: 1,
         triggerOnce: true
     });
 
@@ -33,18 +44,26 @@ const Title = ({duration = 0.75, fontSize = 'text-4xl', text}) => {
     
 
     return (
-        <h2 className={`text-indigo-600 overflow-hidden font-anton tracking-wider ${fontSize}`} ref={ref} >
-            <motion.span className="block" variants={variantsHeroTitle} animate={animation}  >
+        <h2 className={`${ color } overflow-hidden font-anton tracking-wider uppercase ${fontSize}`} ref={ref} >
+            <motion.span className="inline-block w-fit" variants={variantsHeroTitle} animate={animation}  >
                 {text}
+                { underlined && (
+                    <Divider 
+                        className={`w-full h-0.5 border-none bg-gradient-to-r ${colorUnderline} to-primary`}
+                        classNameContainer="ml-0 my-3"
+                    />
+                )}
             </motion.span>
         </h2>
     )
 }
 
 Title.propTypes = {
+    color: PropTypes.string,
     duration: PropTypes.number,
     fontSize: PropTypes.string,
-    text: PropTypes.string
+    text: PropTypes.string,
+    underlined: PropTypes.bool
 }
 
 export default Title

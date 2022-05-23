@@ -13,13 +13,17 @@ const List = ({items, title, description}) => {
             y: 0, 
             opacity: 1, 
             transition:{ 
-                default: { duration: 0.3, delay: i * 0.5 },
+                default: { 
+                    duration: 0.5, 
+                    delay: i * 0.25 
+                },
             }
         })
     }
 
     const animation = useAnimation();
     const [ ref, inView, ] = useInView({
+        threshold: 1,
         triggerOnce: true
     });
 
@@ -33,9 +37,9 @@ const List = ({items, title, description}) => {
     }, [inView])
 
     return (
-        <div className="mt-0 first-of-type:mt-20" >
-            <Title text={ title } fontSize="text-3xl" />
-            <Paragraph text={ description } scrollAnimation className="text-indigo-300 text-lg mt-10" />
+        <div className="mt-24" >
+            <Title text={ title } fontSize="text-2xl" underlined={ false } />
+            <Paragraph delay={0.3} text={ description } scrollAnimation className="text-indigo-300 text-lg mt-10" />
             <ul className="list-none text-indigo-300 mt-12" ref={ref}>
                 { items.map( ({icon, skill, value}, index) => {
 
@@ -47,7 +51,7 @@ const List = ({items, title, description}) => {
                             scaleX: 1,
                             transition: {
                                 duration: 1,
-                                delay: index * 0.5,
+                                delay: 0.5,
                                 ease: 'easeInOut'
                             }
                         }
@@ -59,14 +63,14 @@ const List = ({items, title, description}) => {
                             key={`${skill}-${index}`}
                             custom={index}
                             variants={variantsList}
-                            animate={animation}
+                            animate={animation}                         
                         >
                             <span className="inline-block mr-3 text-xl">{icon}</span>
                             <span className="inline-block tracking-wider">{skill}</span>
                             <div className="w-full">
                                 { inView && (
                                     <motion.div 
-                                        className="h-1 bg-gradient-to-r from-indigo-900/60 to-indigo-600 mt-4 text-base text-white relative" 
+                                        className="h-1 bg-gradient-to-r from-indigo-900/60 to-indigo-600 mt-2 rounded-md" 
                                         style={{ width: `${value}%`, originX: 0 }}
                                         variants={variantSkillValue}
                                         initial="initial" 
