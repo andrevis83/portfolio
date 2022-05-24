@@ -63,4 +63,6 @@ LetterAnimated.propTypes = {
   variants: PropTypes.object
 }
 
+LetterAnimated.displayName = 'LetterAnimated'
+
 export default LetterAnimated;

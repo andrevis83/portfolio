@@ -44,6 +44,7 @@ const Project = ({count, href = '#', image, title = null}) => {
                         <Image 
                             className="w-full h-auto"
                             layout='responsive'
+                            alt='image project'
                             src={ image.path } 
                             width={image.width}
                             height={image.height}

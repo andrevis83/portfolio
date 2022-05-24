@@ -69,6 +69,7 @@ const Project = ({project}) => {
                 <Image 
                     className="w-full h-auto"
                     layout='responsive'
+                    alt='image project'
                     priority={true}
                     src={ image.path } 
                     width={image.width}
