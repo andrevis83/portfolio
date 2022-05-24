@@ -54,7 +54,7 @@ const Home = ({contents, projects: ProjectsList}) => {
         <motion.div className="mt-8 w-fit" variants={variantCtaContainer} initial="initial" animate="animate">
           <NavLink 
               href="mailto:andrea.visentini83@gmail.com" 
-              childrenClassName="uppercase px-4 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
+              childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
               childrenText="Get in touch"
               variants={variantCtaLetters()}
           />
@@ -75,7 +75,14 @@ const Home = ({contents, projects: ProjectsList}) => {
               <div className="mt-24">
                 { skills.map( (skill) => {
                     const { list, title, description } = skill;     
-                    return <List key={title} items={list} title={title} description={description} />                                                     
+                    return (  
+                      <List 
+                        key={title} 
+                        items={list} 
+                        title={title} 
+                        description={description}
+                      />   
+                    )                                                  
                   })
                 }
               </div>

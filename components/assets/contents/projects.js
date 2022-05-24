@@ -50,5 +50,5 @@ export const projects = [
         subtitle: "Backoffice web application",
         title: "DPC Computer",
         video: "/videos/dpc-video.mp4"
-    },
+    }
 ]

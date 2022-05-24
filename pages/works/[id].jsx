@@ -8,7 +8,7 @@ import NavLink from '../../components/navbar/NavLink'
 import Loader from '../../components/Loader'
 import { projects as projectsList } from '../../components/assets/contents/projects'
 import { variantCtaContainer, variantCtaLetters, variantsHeroTitle, variantsProjectSlide } from '../../components/assets/variants'
-import { Paragraph, Section, Title } from '../../components/section/'
+import { List, Paragraph, Section, Title } from '../../components/section/'
 
 import WordAnimated from '../../components/WordAnimated'
 import ScrollDown from '../../components/ScrollDown'
@@ -93,9 +93,9 @@ const Project = ({project}) => {
                 <NavLink 
                     external
                     href={cta.href} 
-                    childrenClassName="uppercase px-4 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
+                    childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
                     childrenText={cta.text} 
-                    variants={variantCtaLetters(0.75)}
+                    variants={variantCtaLetters()}
                 />
             </motion.div>
             <ScrollDown text={"Scroll to explore"} />
@@ -109,15 +109,8 @@ const Project = ({project}) => {
                     <Paragraph delay={0.3} text={ secondSection.description[1] } scrollAnimation className="mt-4 text-indigo-300 text-lg" /> 
                     <Paragraph delay={0.3} text={ secondSection.description[2] } scrollAnimation className="mt-4 text-indigo-300 text-lg" /> 
                     <Video src={video} posterPath={image.path} />
-                </Section> 
-                <Section className="mt-16">
-                    <Title color="text-indigo-600" text={"A look to "} underlined={false} />  
-                    <Title color="text-indigo-600" colorUnderline={'from-indigo-700 via-indigo-700/60'} text={'the technologies'} />                  
-                    <Paragraph delay={0.3} text={ 'secondSection.description[0]' } scrollAnimation className="mt-12 text-indigo-300 text-lg" />    
-                    <Paragraph delay={0.3} text={ 'secondSection.description[1]' } scrollAnimation className="mt-4 text-indigo-300 text-lg" /> 
-                    <Paragraph delay={0.3} text={ 'secondSection.description[2]' } scrollAnimation className="mt-4 text-indigo-300 text-lg" /> 
-                </Section>       
-                <Section className="mt-16 py-16 bg-black next__project">
+                </Section>     
+                <Section className=" py-16 next__project">
                     <Link href={ `/works/${cta.nextId}` } passHref  scroll={false}>
                         <a className="overflow-hidden" >
                             <Title color="text-indigo-600" text={'Next'} fontSize="text-4xl" underlined={false} />

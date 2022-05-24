@@ -5,7 +5,7 @@ import { motion, useAnimation } from 'framer-motion'
 
 import { Paragraph, Title } from './';
 
-const List = ({items, title, description}) => {
+const List = ({items, margin = 6, title, description}) => {
 
     const variantsList = {
         initial: { y: 32, opacity: 0 },
@@ -27,7 +27,6 @@ const List = ({items, title, description}) => {
         triggerOnce: true
     });
 
-
     useEffect(() => {
         if (inView) {
             animation.start('animate');
@@ -37,11 +36,12 @@ const List = ({items, title, description}) => {
     }, [inView])
 
     return (
-        <div className="mt-24" >
-            <Title text={ title } fontSize="text-2xl" underlined={ false } />
-            <Paragraph delay={0.3} text={ description } scrollAnimation className="text-indigo-300 text-lg mt-10" />
+        <div style={{ marginTop: `${margin}rem`}}>
+            { title && <Title text={ title } fontSize="text-2xl" underlined={ false } />}
+            { description && <Paragraph delay={0.3} text={ description } scrollAnimation className="text-indigo-300 text-lg mt-10" />}
             <ul className="list-none text-indigo-300 mt-12" ref={ref}>
-                { items.map( ({icon, skill, value}, index) => {
+                { items.map( ( item, index) => { 
+                    const {icon = null, skill = null, value = null} = item;
 
                     const variantSkillValue = {
                         initial: {
@@ -59,27 +59,30 @@ const List = ({items, title, description}) => {
 
                     return (
                         <motion.li 
-                            className="flex items-center flex-wrap text-lg mb-10 last-of-type:mb-0" 
+                            className={ `flex items-center flex-wrap text-lg ${ (item && typeof item === 'string') ? 'mb-5' : 'mb-10'} last-of-type:mb-0` } 
                             key={`${skill}-${index}`}
                             custom={index}
                             variants={variantsList}
                             animate={animation}                         
                         >
-                            <span className="inline-block mr-3 text-xl">{icon}</span>
-                            <span className="inline-block tracking-wider">{skill}</span>
-                            <div className="w-full">
-                                { inView && (
-                                    <motion.div 
-                                        className="h-1 bg-gradient-to-r from-indigo-900/60 to-indigo-600 mt-2 rounded-md" 
-                                        style={{ width: `${value}%`, originX: 0 }}
-                                        variants={variantSkillValue}
-                                        initial="initial" 
-                                        animate="animate"
-                                    >
-                                    </motion.div>
-                                )}
-                                
-                            </div>
+                            { icon && <span className="inline-block mr-3 text-xl">{icon}</span>}
+                            { skill && <span className="inline-block tracking-wider">{skill}</span>}
+                            { (item && typeof item === 'string') && <span className="inline-block tracking-wider">{item}</span>}
+                            { value && (
+                                <div className="w-full">
+                                    { inView && (
+                                        <motion.div 
+                                            className="h-1 bg-gradient-to-r from-indigo-900/60 to-indigo-600 mt-2 rounded-md" 
+                                            style={{ width: `${value}%`, originX: 0 }}
+                                            variants={variantSkillValue}
+                                            initial="initial" 
+                                            animate="animate"
+                                        >
+                                        </motion.div>
+                                    )}
+                                    
+                                </div>
+                            )}
                         </motion.li>
                     )
                 })}
@@ -90,6 +93,7 @@ const List = ({items, title, description}) => {
 
 List.propTypes = {
     items: PropTypes.array,
+    margin: PropTypes.number,
     description: PropTypes.string,
     title: PropTypes.string
 }
