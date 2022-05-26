@@ -19,6 +19,9 @@ module.exports = {
       spacing: {
         '1/5': '20%',
       },
+      width: {
+        '104': '32rem'
+      },
       zIndex: {
         '1000': '1000',
       }

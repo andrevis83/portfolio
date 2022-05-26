@@ -38,23 +38,23 @@ const Home = ({contents, projects: ProjectsList}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Section 
-        className="flex flex-col justify-center"
+        className="flex flex-col pt-40 md:justify-center"
         fixedHeight 
       >
-        <div className="text-indigo-600 text-4xl w-full mx-auto uppercase font-anton ">
+        <div className="text-indigo-600 text-4xl md:text-6xl w-full md:w-5/6 uppercase font-anton">
           <WordAnimated text={ title } variants={ variantsHeroTitle } hover={{ color: '#c7d2fe', transition: '0.3s'}}/>
         </div>
         <Divider 
-          className="w-56 h-0.5 border-none bg-gradient-to-r from-indigo-700 via-indigo-700/60 to-primary" 
+          className="w-56 md:w-104 h-0.5 border-none bg-gradient-to-r from-indigo-700 via-indigo-700/60 to-primary" 
           classNameContainer="ml-0 mt-4 my-8 w-fit"
           delay={1}
         />
-        <Paragraph className="text-indigo-400 text-lg uppercase" text={ subtitle } delay={1} />
-        <Paragraph className="mt-12 text-indigo-200 text-lg" delay={1.5} text={ getInTouch } onComplete = { () => setIsComplete(true) } />
-        <motion.div className="mt-8 w-fit" variants={variantCtaContainer} initial="initial" animate="animate">
+        <Paragraph className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12 md:w-5/6 md:ml-auto" text={ subtitle } delay={1} />
+        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-1/2 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } onComplete = { () => setIsComplete(true) } />
+        <motion.div className="mt-7 md:mt-12 w-fit md:pl-6" variants={ variantCtaContainer } initial="initial" animate="animate">
           <NavLink 
               href="mailto:andrea.visentini83@gmail.com" 
-              childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
+              childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-base md:text-lg text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
               childrenText="Get in touch"
               variants={variantCtaLetters()}
           />
@@ -63,29 +63,27 @@ const Home = ({contents, projects: ProjectsList}) => {
       </Section>
       { isComplete && 
           <>
-            <Section className="mt-16 bg-black py-16">
+            <Section className="bg-black py-16">
               <Title color="text-indigo-600" text='About me' />          
-              <Paragraph  delay={0.3} text={ about } scrollAnimation className="mt-12 text-indigo-300 text-lg" />           
-              <Paragraph  delay={0.3} text={ about_2 } scrollAnimation className="text-indigo-300 text-lg mt-8" />
+              <Paragraph  delay={0.3} text={ about } scrollAnimation className="mt-8 text-indigo-300 text-lg md:text-3xl" />           
+              <Paragraph  delay={0.3} text={ about_2 } scrollAnimation className="mt-6 md:mt-16 text-indigo-300 text-lg md:text-3xl" />
             </Section>
             <Section className="mt-16" fixedHeight>
               <Title text='Technical Skills' />
-              <Paragraph  delay={0.3} text={ skillsTech } scrollAnimation className="mt-10 text-indigo-300 text-lg" />
-              <Paragraph  delay={0.3} text={ skillsTech_2 } scrollAnimation className="mt-10 text-indigo-300 text-lg" />
-              <div className="mt-24">
-                { skills.map( (skill) => {
-                    const { list, title, description } = skill;     
-                    return (  
-                      <List 
-                        key={title} 
-                        items={list} 
-                        title={title} 
-                        description={description}
-                      />   
-                    )                                                  
-                  })
-                }
-              </div>
+              <Paragraph  delay={0.3} text={ skillsTech } scrollAnimation className="mt-8 text-indigo-300 text-lg  md:text-3xl" />
+              <Paragraph  delay={0.3} text={ skillsTech_2 } scrollAnimation className="mt-6 text-indigo-300 text-lg  md:text-3xl" />
+              { skills.map( (skill) => {
+                  const { list, title, description } = skill;     
+                  return (  
+                    <List 
+                      key={title} 
+                      items={list} 
+                      title={title} 
+                      description={description}
+                    />   
+                  )                                                  
+                })
+              }
             </Section>
             <Section className=" mt-16 bg-black py-16" >
               <Title text='Projects' />

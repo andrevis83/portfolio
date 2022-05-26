@@ -8,7 +8,7 @@ import NavLink from '../../components/navbar/NavLink'
 import Loader from '../../components/Loader'
 import { projects as projectsList } from '../../components/assets/contents/projects'
 import { variantCtaContainer, variantCtaLetters, variantsHeroTitle, variantsProjectSlide } from '../../components/assets/variants'
-import { List, Paragraph, Section, Title } from '../../components/section/'
+import { Paragraph, Section, Title } from '../../components/section/'
 
 import WordAnimated from '../../components/WordAnimated'
 import ScrollDown from '../../components/ScrollDown'
@@ -59,13 +59,13 @@ const Project = ({project}) => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <Section 
-            className="flex flex-col justify-center"
+            className="flex flex-col pt-40 md:justify-center"
             fixedHeight 
         >
-            <div className="text-indigo-600 text-4xl w-full mx-auto uppercase font-anton ">
+            <div className="text-indigo-600 text-4xl md:text-6xl w-full md:w-5/6 uppercase font-anton">
                 <WordAnimated text={ title } variants={ variantsHeroTitle } hover={{ color: '#c7d2fe', transition: '0.3s'}}/>
             </div>
-            <div className="w-full h-fit mt-6 relative overflow-hidden" >
+            <div className="w-full h-fit mt-10 relative overflow-hidden" >
                 <Image 
                     className="w-full h-auto"
                     layout='responsive'
@@ -88,9 +88,9 @@ const Project = ({project}) => {
                     animate="animate"
                 />
             </div>  
-            <Paragraph delay={1.25} className="text-indigo-400 text-xl uppercase font-anton tracking-wider mt-12" text={ subtitle } />
-            <Paragraph delay={1.5} className="text-indigo-300 text-base uppercase mt-8" text={ description } onComplete = { () => setIsComplete(true) } />
-            <motion.div className="mt-8 w-fit" variants={variantCtaContainer} initial="initial" animate="animate">
+            <Paragraph delay={1.25} className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12" text={ subtitle } />
+            <Paragraph delay={1.5} className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl" text={ description } onComplete = { () => setIsComplete(true) } />
+            <motion.div className="mt-7 md:my-12 w-fit" variants={variantCtaContainer} initial="initial" animate="animate">
                 <NavLink 
                     external
                     href={cta.href} 
@@ -103,7 +103,7 @@ const Project = ({project}) => {
         </Section>
         { isComplete && 
             <>
-                <Section className="mt-16 bg-black py-16">
+                <Section className="bg-black py-16">
                     <Title color="text-indigo-600" text={secondSection.title[0]} underlined={false} />  
                     <Title color="text-indigo-600" colorUnderline={'from-indigo-700 via-indigo-700/60'} text={secondSection.title[1]} />                  
                     <Paragraph delay={0.3} text={ secondSection.description[0] } scrollAnimation className="mt-12 text-indigo-300 text-lg" />    
@@ -113,7 +113,7 @@ const Project = ({project}) => {
                 </Section>     
                 <Section className=" py-16 next__project">
                     <Link href={ `/works/${cta.nextId}` } passHref  scroll={false}>
-                        <a className="overflow-hidden" >
+                        <a className="overflow-hidden outline-none" >
                             <Title color="text-indigo-600" text={'Next'} fontSize="text-4xl" underlined={false} />
                             <Paragraph delay={0.3} text={ cta.next } scrollAnimation className="mt-4 text-indigo-300 text-lg" />  
                         </a>

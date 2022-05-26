@@ -38,7 +38,7 @@ const Paragraph = ({className, delay = 0, onComplete, scrollAnimation = false, t
     const paragraphOnScroll = () => {
         return(
                 <motion.div 
-                    className={`w-full mx-auto ${className}`}
+                    className={`w-full ${className}`}
                     variants={variantsParagraph} 
                     animate={animation}
                     ref={ref}
@@ -51,7 +51,7 @@ const Paragraph = ({className, delay = 0, onComplete, scrollAnimation = false, t
     const paragraphStatic = () => {
         return(
             <motion.div 
-                className={` w-full mx-auto ${className}`}
+                className={` w-full ${className}`}
                 variants={variantsParagraph} 
                 initial="initial" 
                 animate="animate"

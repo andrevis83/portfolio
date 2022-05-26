@@ -42,7 +42,7 @@ const ScrollDown = ({delay = 3.5, text}) => {
   }
 
   return (
-    <div className="absolute left-0 right-0 bottom-0 text-indigo-50 flex items-center px-6 py-3">
+    <div className="scrolldown text-indigo-50 text-base md:text-lg flex items-center justify-end px-0 py-3 mt-16 md:mt-auto">
       <motion.div 
         variants={variantsScrollIconContainer}
         initial="initial" 

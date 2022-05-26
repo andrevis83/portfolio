@@ -10,7 +10,7 @@ const Title = (props) => {
         color = 'text-indigo-600', 
         colorUnderline = 'from-indigo-700 via-indigo-700/60',
         duration = 1.25, 
-        fontSize = 'text-4xl', 
+        fontSize = 'text-4xl md:text-6xl', 
         text, 
         underlined = true
     } = props;
