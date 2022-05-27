@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer';
 
-const Paragraph = ({className, delay = 0, text}) => {
+const Paragraph = ({className, delay = 0, observer = true, text}) => {
 
     const variantsParagraph = {
         initial: { opacity: 0, y: 32},
@@ -20,13 +20,12 @@ const Paragraph = ({className, delay = 0, text}) => {
 
     const animation = useAnimation();
     const [ ref, inView ] = useInView({
-        threshold: 1,
         triggerOnce: true
     });
 
 
     useEffect(() => { 
-        if (inView) {
+        if ( observer && inView) {
             animation.start('animate');
         } else {
             animation.start('initial');
@@ -40,7 +39,7 @@ const Paragraph = ({className, delay = 0, text}) => {
                 className={`w-full ${className}`}
                 variants={variantsParagraph} 
                 initial="initial"
-                animate={animation}
+                animate={observer ? animation : "animate"}
                 ref={ref}
             >
                 <span>{ text }</span>
@@ -52,6 +51,7 @@ const Paragraph = ({className, delay = 0, text}) => {
 Paragraph.propTypes = {
     className: PropTypes.string,
     delay: PropTypes.number,
+    observer: PropTypes.bool,
     text: PropTypes.string
 }
 
