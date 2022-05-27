@@ -50,7 +50,7 @@ const Home = ({contents, projects: ProjectsList}) => {
           delay={1}
         />
         <Paragraph className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12 md:w-5/6 md:ml-auto" text={ subtitle } delay={1} />
-        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-1/2 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } onComplete = { () => setIsComplete(true) } />
+        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-1/2 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } />
         <motion.div className="mt-7 md:mt-12 w-fit md:pl-6" variants={ variantCtaContainer } initial="initial" animate="animate">
           <NavLink 
               href="mailto:andrea.visentini83@gmail.com" 
@@ -59,7 +59,7 @@ const Home = ({contents, projects: ProjectsList}) => {
               variants={variantCtaLetters()}
           />
         </motion.div>
-        <ScrollDown text={"Scroll to know me"} />
+        <ScrollDown text={"Scroll to know me"} onComplete = { () => {setIsComplete(true)} } />
       </Section>
       { isComplete && 
           <>

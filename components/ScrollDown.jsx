@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import WordAnimated from './WordAnimated'
 
-const ScrollDown = ({delay = 3.5, text}) => {
+const ScrollDown = ({delay = 3.5, text, onComplete}) => {
 
   const variantsScrollIconContainer = {
     initial: { y: 8, opacity: 0 },
@@ -47,6 +47,8 @@ const ScrollDown = ({delay = 3.5, text}) => {
         variants={variantsScrollIconContainer}
         initial="initial" 
         animate="animate" 
+        onAnimationComplete={ onComplete }
+
       >
         <motion.div 
           variants={variantsScrollIcon}
@@ -56,13 +58,15 @@ const ScrollDown = ({delay = 3.5, text}) => {
           <HiArrowDown />
         </motion.div>
       </motion.div>   
-      <WordAnimated text={text} variants={variantsText} hover={{ color: '#6366f1', transition: '0.3s'}} />
+      <WordAnimated text={text} variants={variantsText} hover={{ color: '#6366f1', transition: '0.3s' }} />
     </div>
   )
 }
 
 ScrollDown.propTypes = {
-    text: PropTypes.string
+  delay: PropTypes.number,
+  onComplete: PropTypes.func,
+  text: PropTypes.string
 }
 
 export default ScrollDown
