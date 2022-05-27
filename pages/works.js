@@ -48,8 +48,8 @@ const Works = ({contents, ProjectList}) => {
           delay={1}
         />
         <Paragraph className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12 md:w-5/6 md:ml-auto " text={ subtitle } delay={1} />
-        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-4/6 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } onComplete = { () => setIsComplete(true) } />
-        <ScrollDown delay={2} text={"Scroll to explore"} />
+        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-4/6 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } />
+        <ScrollDown delay={2} text={"Scroll to explore"} onComplete = { () => setIsComplete(true) }/>
       </Section>
       { isComplete && 
           <Section className=" mt-16 bg-black py-16" >

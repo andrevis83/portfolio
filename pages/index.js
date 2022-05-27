@@ -65,13 +65,13 @@ const Home = ({contents, projects: ProjectsList}) => {
           <>
             <Section className="bg-black py-16">
               <Title color="text-indigo-600" text='About me' />          
-              <Paragraph  delay={0.3} text={ about } scrollAnimation className="mt-8 text-indigo-300 text-lg md:text-3xl" />           
-              <Paragraph  delay={0.3} text={ about_2 } scrollAnimation className="mt-6 md:mt-16 text-indigo-300 text-lg md:text-3xl" />
+              <Paragraph  delay={0.3} text={ about }  className="mt-8 text-indigo-300 text-lg md:text-3xl" />           
+              <Paragraph  delay={0.3} text={ about_2 }  className="mt-6 md:mt-16 text-indigo-300 text-lg md:text-3xl" />
             </Section>
             <Section className="mt-16" fixedHeight>
               <Title text='Technical Skills' />
-              <Paragraph  delay={0.3} text={ skillsTech } scrollAnimation className="mt-8 text-indigo-300 text-lg  md:text-3xl" />
-              <Paragraph  delay={0.3} text={ skillsTech_2 } scrollAnimation className="mt-6 text-indigo-300 text-lg  md:text-3xl" />
+              <Paragraph  delay={0.3} text={ skillsTech } className="mt-8 text-indigo-300 text-lg  md:text-3xl" />
+              <Paragraph  delay={0.3} text={ skillsTech_2 } className="mt-6 text-indigo-300 text-lg  md:text-3xl" />
               { skills.map( (skill) => {
                   const { list, title, description } = skill;     
                   return (  

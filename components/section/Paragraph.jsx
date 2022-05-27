@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer';
 
-const Paragraph = ({className, delay = 0, scrollAnimation = false, text}) => {
+const Paragraph = ({className, delay = 0, text}) => {
 
     const variantsParagraph = {
-        initial: { opacity: 0, rotateX: -15, y: 32},
+        initial: { opacity: 0, y: 32},
         animate: { 
             opacity: 1, 
-            originY: 1,
-            rotateX: 0,
             y: 0,
             transition: { 
                 duration: 0.75, 
@@ -54,7 +52,6 @@ const Paragraph = ({className, delay = 0, scrollAnimation = false, text}) => {
 Paragraph.propTypes = {
     className: PropTypes.string,
     delay: PropTypes.number,
-    scrollAnimation: PropTypes.bool,
     text: PropTypes.string
 }
 
