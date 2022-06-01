@@ -36,7 +36,7 @@ const List = ({items, title, description}) => {
     }, [inView])
 
     return (
-        <div className="mt-16">
+        <div className="mt-16 md:mt-24 md:w-1/2 md:px-4">
             { title && <Title text={ title } fontSize="text-2xl md:text-4xl" underlined={ false } />}
             { description && <Paragraph delay={0.3} text={ description } scrollAnimation className="text-indigo-300 text-lg md:text-2xl mt-6" />}
             <ul className="list-none text-indigo-300 mt-12" ref={ref}>

@@ -16,6 +16,9 @@ module.exports = {
       minWidth: {
         '5': '5px',
       },
+      screens: {
+        'md2': '800px',
+      },
       spacing: {
         '1/5': '20%',
       },

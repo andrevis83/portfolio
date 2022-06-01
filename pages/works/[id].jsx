@@ -16,7 +16,7 @@ import Video from '../../components/Video'
 
 
 export const getStaticPaths = async () => {   
-    const paths = projectsList.map( ({id}) => {
+    const paths = projectsList.map( ({ id }) => {
         return {params: {
             id: id.toString()
         }}
@@ -89,7 +89,7 @@ const Project = ({project}) => {
                 />
             </div>  
             <Paragraph delay={1.25} className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12" text={ subtitle } />
-            <Paragraph delay={1.5} className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl" text={ description } />
+            <Paragraph delay={1.5} className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-3/4 md:mr-auto" text={ description } />
             <motion.div className="mt-7 md:my-12 w-fit" variants={variantCtaContainer} initial="initial" animate="animate">
                 <NavLink 
                     external
@@ -106,16 +106,16 @@ const Project = ({project}) => {
                 <Section className="bg-black py-16">
                     <Title color="text-indigo-600" text={secondSection.title[0]} underlined={false} />  
                     <Title color="text-indigo-600" colorUnderline={'from-indigo-700 via-indigo-700/60'} text={secondSection.title[1]} />                  
-                    <Paragraph delay={0.3} text={ secondSection.description[0] } className="mt-12 text-indigo-300 text-lg" />    
-                    <Paragraph delay={0.3} text={ secondSection.description[1] } className="mt-4 text-indigo-300 text-lg" /> 
-                    <Paragraph delay={0.3} text={ secondSection.description[2] } className="mt-4 text-indigo-300 text-lg" /> 
+                    <Paragraph delay={0.3} text={ secondSection.description[0] } className="mt-8 text-indigo-300 text-lg md:text-2xl md:w-2/3" />    
+                    <Paragraph delay={0.3} text={ secondSection.description[1] } className="text-indigo-300 text-lg md:text-2xl md:w-2/3" /> 
+                    <Paragraph delay={0.3} text={ secondSection.description[2] } className="text-indigo-300 text-lg md:text-2xl md:w-2/3" /> 
                     <Video src={video} posterPath={image.path} />
                 </Section>     
                 <Section className=" py-16 next__project">
                     <Link href={ `/works/${cta.nextId}` } passHref  scroll={false}>
                         <a className="overflow-hidden outline-none" >
-                            <Title color="text-indigo-600" text={'Next'} fontSize="text-4xl" underlined={false} />
-                            <Paragraph delay={0.3} text={ cta.next } className="mt-4 text-indigo-300 text-lg" />  
+                            <Title color="text-indigo-600" text={'Next'} fontSize="text-4xl md:text-5xl" underlined={false} />
+                            <Paragraph delay={0.3} text={ cta.next } className="mt-4 text-indigo-300 text-lg md:text-2xl" />  
                         </a>
                     </Link>                  
                 </Section>

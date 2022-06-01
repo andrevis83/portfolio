@@ -20,8 +20,10 @@ const Section = ({children, className = null, fixedHeight = false}) => {
     }, [])
 
     return (
-        <section className={ `${ className ? className : ''} relative container mx-auto px-6 md:px-8 overflow-hidden` } style={{ minHeight: height }}>     
-            { children }
+        <section className={ `${ className ? className : ''} relative mx-auto px-6 md:px-8 overflow-hidden` } style={{ minHeight: height }}>   
+            <div className=" max-w-screen-sm md:max-w-screen-md mx-auto">  
+                { children }
+            </div>
         </section> 
     )
 }

@@ -49,7 +49,7 @@ const Home = ({contents, projects: ProjectsList}) => {
           classNameContainer="ml-0 mt-4 my-8 w-fit"
           delay={1}
         />
-        <Paragraph className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12 md:w-5/6 md:ml-auto" text={ subtitle } delay={1} />
+        <Paragraph className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12 md:w-3/4 md:ml-auto" text={ subtitle } delay={1} />
         <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-1/2 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } observer={false} />
         <motion.div className="mt-7 md:mt-12 w-fit md:pl-6" variants={ variantCtaContainer } initial="initial" animate="animate">
           <NavLink 
@@ -65,25 +65,27 @@ const Home = ({contents, projects: ProjectsList}) => {
           <>
             <Section className="bg-black py-16">
               <Title color="text-indigo-600" text='About me' />          
-              <Paragraph  delay={0.3} text={ about }  className="mt-8 text-indigo-300 text-lg md:text-3xl" />           
-              <Paragraph  delay={0.3} text={ about_2 }  className="mt-6 md:mt-16 text-indigo-300 text-lg md:text-3xl" />
+              <Paragraph  delay={0.3} text={ about }  className="mt-8 text-indigo-300 text-lg md:text-2xl md:w-2/3" />           
+              <Paragraph  delay={0.3} text={ about_2 }  className="mt-6 md:mt-16 text-indigo-300 text-lg md:text-2xl md:w-2/3 md:ml-auto md:pl-7" />
             </Section>
             <Section className="mt-16" fixedHeight>
               <Title text='Technical Skills' />
-              <Paragraph  delay={0.3} text={ skillsTech } className="mt-8 text-indigo-300 text-lg  md:text-3xl" />
-              <Paragraph  delay={0.3} text={ skillsTech_2 } className="mt-6 text-indigo-300 text-lg  md:text-3xl" />
-              { skills.map( (skill) => {
-                  const { list, title, description } = skill;     
-                  return (  
-                    <List 
-                      key={title} 
-                      items={list} 
-                      title={title} 
-                      description={description}
-                    />   
-                  )                                                  
-                })
-              }
+              <Paragraph  delay={0.3} text={ skillsTech } className="mt-8 text-indigo-300 text-lg md:text-2xl md:w-2/3" />
+              <Paragraph  delay={0.3} text={ skillsTech_2 } className="text-indigo-300 text-lg md:text-2xl md:w-2/3 " />
+              <div className="flex flex-wrap">
+                { skills.map( (skill) => {
+                    const { list, title, description } = skill;     
+                    return (  
+                      <List 
+                        key={title} 
+                        items={list} 
+                        title={title} 
+                        description={description}
+                      />   
+                    )                                                  
+                  })
+                }
+              </div>
             </Section>
             <Section className=" mt-16 bg-black py-16" >
               <Title text='Projects' />
