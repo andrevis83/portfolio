@@ -35,11 +35,12 @@ const LetterAnimated = forwardRef(({className, exit = false, observer = false, t
 
 
     return (
-      <div className={`${className} overflow-hidden`} ref={ observer ? refInview : null }>
+      <div className={`${className} overflow-hidden`} ref={ refInview }>
         { letters && letters.map( (letter, index) => {
+          console.log();
           return (
             <motion.span 
-              className="inline-block min-w-5" 
+              className={ `inline-block ${ letter === ' ' ? 'min-w-5 lg:min-w-6' : ''}` } 
               custom={index}
               variants={variants}
               initial="initial"

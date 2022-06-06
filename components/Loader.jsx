@@ -33,7 +33,7 @@ const Loader = ({children}) => {
                 onAnimationComplete ={ () => setIsComplete(true) }
             >
                  <LetterAnimated 
-                    className="text-indigo-200 text-3xl md:text-5xl font-bold uppercase mt-1" 
+                    className="text-indigo-200 text-3xl md:text-5xl lg:text-7xl font-bold uppercase mt-1" 
                     exit={ true }
                     text={ 'Andrea Visentini' } 
                     variants = {variantsNavlinks(0, 0.5)}

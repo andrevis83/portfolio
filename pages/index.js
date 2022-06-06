@@ -41,20 +41,21 @@ const Home = ({contents, projects: ProjectsList}) => {
         className="flex flex-col pt-40 md:justify-center"
         fixedHeight 
       >
-        <div className="text-indigo-600 text-4xl md:text-6xl w-full md:w-5/6 uppercase font-anton">
-          <WordAnimated text={ title } variants={ variantsHeroTitle } hover={{ color: '#c7d2fe', transition: '0.3s'}}/>
+        <div className="text-indigo-600 text-4xl md:text-6xl lg:text-8xl xl:text-9xl sm:w-[65%] md:w-[85%] lg:w-[93%] uppercase font-anton">
+          <WordAnimated className="lg:mr-5" text={ title } variants={ variantsHeroTitle } hover={{ color: '#c7d2fe', transition: '0.3s'}}/>
+          <Divider 
+            className="w-full h-full border-none bg-gradient-to-r from-indigo-700 via-indigo-700/60 to-primary" 
+            classNameContainer="w-3/4 h-0.5 mt-4 lg:mt-6"
+            delay={1}
+          />
         </div>
-        <Divider 
-          className="w-56 md:w-104 h-0.5 border-none bg-gradient-to-r from-indigo-700 via-indigo-700/60 to-primary" 
-          classNameContainer="ml-0 mt-4 my-8 w-fit"
-          delay={1}
-        />
-        <Paragraph className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12 md:w-3/4 md:ml-auto" text={ subtitle } delay={1} />
-        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-1/2 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } observer={false} />
+        
+        <Paragraph className="text-indigo-400 text-lg md:text-3xl lg:text-4xl uppercase mt-8 md:mt-11 lg:mt-20 md:w-3/4 md:ml-auto" text={ subtitle } delay={1} />
+        <Paragraph className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl lg:text-3xl md:w-1/2 md:mr-auto md:pl-6 " delay={1.5} text={ getInTouch } />
         <motion.div className="mt-7 md:mt-12 w-fit md:pl-6" variants={ variantCtaContainer } initial="initial" animate="animate">
           <NavLink 
               href="mailto:andrea.visentini83@gmail.com" 
-              childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-base md:text-lg text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
+              childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-base md:text-lg lg:text-xl lg:text-xl text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
               childrenText="Get in touch"
               variants={variantCtaLetters()}
           />
@@ -65,13 +66,13 @@ const Home = ({contents, projects: ProjectsList}) => {
           <>
             <Section className="bg-black py-16">
               <Title color="text-indigo-600" text='About me' />          
-              <Paragraph  delay={0.3} text={ about }  className="mt-8 text-indigo-300 text-lg md:text-2xl md:w-2/3" />           
-              <Paragraph  delay={0.3} text={ about_2 }  className="mt-6 md:mt-16 text-indigo-300 text-lg md:text-2xl md:w-2/3 md:ml-auto md:pl-7" />
+              <Paragraph  delay={0.3} text={ about }  className="mt-8 md:mt-16 text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3 lg:w-1/2" />           
+              <Paragraph  delay={0.3} text={ about_2 }  className="mt-6 md:mt-12 lg:mt-24 text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3 lg:w-1/2 md:ml-auto md:pl-7" />
             </Section>
             <Section className="mt-16" fixedHeight>
               <Title text='Technical Skills' />
-              <Paragraph  delay={0.3} text={ skillsTech } className="mt-8 text-indigo-300 text-lg md:text-2xl md:w-2/3" />
-              <Paragraph  delay={0.3} text={ skillsTech_2 } className="text-indigo-300 text-lg md:text-2xl md:w-2/3 " />
+              <Paragraph  delay={0.3} text={ skillsTech } className="mt-8 text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3" />
+              <Paragraph  delay={0.3} text={ skillsTech_2 } className="text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3 " />
               <div className="flex flex-wrap">
                 { skills.map( (skill) => {
                     const { list, title, description } = skill;     

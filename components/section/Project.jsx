@@ -27,13 +27,13 @@ const Project = ({count, href = '#', image, title = null}) => {
     return (
         <div className="w-full mb-24 last-of-type:mb-0">
              <LetterAnimated 
-                className="text-indigo-200 text-3xl md:text-5xl font-bold uppercase mt-10" 
+                className="text-indigo-200 text-3xl md:text-5xl lg:text-7xl font-bold uppercase mt-10" 
                 text={ `${count < 10 ? `0${count}` : count}.` } 
                 variants = {variantsNavlinks(0.25, 0.5)}
                 observer={true}
             />
             <LetterAnimated 
-                className="text-indigo-200 text-3xl md:text-5xl font-bold uppercase mt-1" 
+                className="text-indigo-200 text-3xl md:text-5xl lg:text-7xl font-bold uppercase mt-1" 
                 text={ title } 
                 variants = {variantsNavlinks(0.25, 0.5)}
                 observer={true}
