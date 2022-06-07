@@ -9,7 +9,12 @@ const NavLink = ({ external = false, href, childrenClassName, childrenText, vari
 
     return (
         <Link  href={href} passHref scroll={false}>
-            <a href={href} className={`${ childrenClassName ? childrenClassName : '' }`} target={ external ? "_blank" : "_self"} rel={'noreferrer'}>
+            <a 
+                href={href} 
+                className={`${ childrenClassName ? childrenClassName : '' }`} 
+                target={ external ? "_blank" : "_self"} 
+                rel={'noreferrer'}
+            >
                 <LetterAnimated 
                     className={ childrenClassName ? childrenClassName : '' } 
                     text={ childrenText ? childrenText : '' } 

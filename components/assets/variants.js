@@ -14,13 +14,13 @@ const variantCtaContainer = {
         originX: 0,
         scaleX: [0, 1.25, 1],
         transition: {
-        delay: 2,
+        delay: 0,
         duration: 1.5
         }
     }
 }
   
-const variantCtaLetters = (delay = 2, duration = 0.75) => {
+const variantCtaLetters = (delay = 0, duration = 0.75) => {
     
     return { 
         initial: { letterSpacing: '0.1em', opacity: 0 },

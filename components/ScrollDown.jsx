@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import WordAnimated from './WordAnimated'
 
-const ScrollDown = ({delay = 3.5, text, onComplete}) => {
+const ScrollDown = ({delay = 0.5, text, onComplete}) => {
 
   const variantsScrollIconContainer = {
     initial: { y: 8, opacity: 0 },

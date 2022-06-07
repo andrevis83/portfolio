@@ -11,6 +11,7 @@ const Title = (props) => {
         colorUnderline = 'from-indigo-700 via-indigo-700/60',
         duration = 1.25, 
         fontSize = 'text-4xl md:text-6xl lg:text-8xl', 
+        margin = 'mb-8 md:mb-16 lg:mb-24',
         text, 
         underlined = true
     } = props;
@@ -44,7 +45,7 @@ const Title = (props) => {
     
 
     return (
-        <h2 className={`${ color } overflow-hidden font-anton tracking-wider uppercase ${fontSize}`} ref={ref} >
+        <h2 className={`${ color } overflow-hidden font-anton tracking-wider lg:tracking-wide uppercase ${margin}  ${fontSize}`} ref={ref} >
             <motion.span className="inline-block w-fit" variants={variantsHeroTitle} animate={animation}  >
                 {text}
                 { underlined && (
@@ -62,6 +63,7 @@ Title.propTypes = {
     color: PropTypes.string,
     duration: PropTypes.number,
     fontSize: PropTypes.string,
+    margin: PropTypes.string,
     text: PropTypes.string,
     underlined: PropTypes.bool
 }

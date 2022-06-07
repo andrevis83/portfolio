@@ -36,9 +36,9 @@ const List = ({items, title, description}) => {
     }, [inView])
 
     return (
-        <div className="mt-16 md:mt-24 md:w-1/2 md:px-4">
-            { title && <Title text={ title } fontSize="text-2xl md:text-4xl lg:text-6xl" underlined={ false } />}
-            { description && <Paragraph delay={0.3} text={ description } scrollAnimation className="text-indigo-300 text-lg md:text-2xl mt-6" />}
+        <div className="mt-16 md:mt-24 lg:mt-32 md:w-1/2 xl:w-1/3 md:pr-4">
+            { title && <Title margin="mb-8" text={ title } fontSize="text-2xl md:text-4xl lg:text-6xl" underlined={ false } />}
+            { description && <Paragraph delay={0.3} text={ description } scrollAnimation className="text-indigo-300 text-lg md:text-2xl lg:text-3xl mt-6" />}
             <ul className="list-none text-indigo-300 mt-12" ref={ref}>
                 { items.map( ( item, index) => { 
                     const {icon = null, skill = null, value = null} = item;

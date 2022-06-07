@@ -22,7 +22,7 @@ const Video = ({posterPath, src}) => {
 
   return (
     <motion.div className="mt-10 w-full" ref={ref} animate={animation} transition={{delay:0.5, duration: 0.5}}>
-      <video className="lazy" autoPlay muted loop playsInline width="610" height="254" poster={ posterPath } >
+      <video className="lazy" autoPlay muted loop playsInline  poster={ posterPath } >
         <source src={ src } type="video/mp4" />
       </video>
     </motion.div>  

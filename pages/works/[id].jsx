@@ -4,16 +4,10 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import NavLink from '../../components/navbar/NavLink'
-import Loader from '../../components/Loader'
+import { CallToAction, Loader, ScrollDown, Video, WordAnimated} from '../../components'
 import { projects as projectsList } from '../../components/assets/contents/projects'
-import { variantCtaContainer, variantCtaLetters, variantsHeroTitle, variantsProjectSlide } from '../../components/assets/variants'
+import { variantsHeroTitle, variantsProjectSlide } from '../../components/assets/variants'
 import { Paragraph, Section, Title } from '../../components/section/'
-
-import WordAnimated from '../../components/WordAnimated'
-import ScrollDown from '../../components/ScrollDown'
-import Video from '../../components/Video'
-
 
 export const getStaticPaths = async () => {   
     const paths = projectsList.map( ({ id }) => {
@@ -62,60 +56,62 @@ const Project = ({project}) => {
             className="flex flex-col pt-40 md:justify-center"
             fixedHeight 
         >
-            <div className="text-indigo-600 text-4xl md:text-6xl w-full md:w-5/6 uppercase font-anton">
-                <WordAnimated text={ title } variants={ variantsHeroTitle } hover={{ color: '#c7d2fe', transition: '0.3s'}}/>
+            <div className="">
+                <div className="text-indigo-600 text-4xl md:text-6xl lg:text-8xl xl:text-9xl sm:w-[65%] md:w-[85%] lg:w-[93%] uppercase font-anton">
+                    <WordAnimated className="md:mr-4 lg:mr-6" text={ title } variants={ variantsHeroTitle } hover={{ color: '#c7d2fe', transition: '0.3s'}}/>
+                </div>
+                <div className="w-full h-fit mt-10 lg:mt-16 relative overflow-hidden" >
+                    <Image 
+                        className="w-full h-auto"
+                        layout='responsive'
+                        alt='image project'
+                        priority={true}
+                        src={ image.path } 
+                        width={image.width}
+                        height={image.height}
+                    />
+                    <motion.div 
+                        className="absolute inset-0 bg-primary z-20" 
+                        variants={variantsProjectSlide(1, 1)}
+                        initial="initial"
+                        animate="animate"
+                    />
+                    <motion.div 
+                        className="absolute inset-0 bg-indigo-600 " 
+                        variants={variantsProjectSlide(1.25, 1)}
+                        initial="initial"
+                        animate="animate"
+                    />
+                </div>  
             </div>
-            <div className="w-full h-fit mt-10 relative overflow-hidden" >
-                <Image 
-                    className="w-full h-auto"
-                    layout='responsive'
-                    alt='image project'
-                    priority={true}
-                    src={ image.path } 
-                    width={image.width}
-                    height={image.height}
-                />
-                <motion.div 
-                    className="absolute inset-0 bg-primary z-20" 
-                    variants={variantsProjectSlide(1, 0.75)}
-                    initial="initial"
-                    animate="animate"
-                />
-                <motion.div 
-                    className="absolute inset-0 bg-indigo-600 " 
-                    variants={variantsProjectSlide(1.25, 0.75)}
-                    initial="initial"
-                    animate="animate"
-                />
-            </div>  
-            <Paragraph delay={1.25} className="text-indigo-400 text-lg md:text-3xl uppercase mt-8 md:mt-12" text={ subtitle } />
-            <Paragraph delay={1.5} className="mt-12 md:mt-20 text-indigo-200 text-base md:text-2xl md:w-3/4 md:mr-auto" text={ description } />
-            <motion.div className="mt-7 md:my-12 w-fit" variants={variantCtaContainer} initial="initial" animate="animate">
-                <NavLink 
-                    external
-                    href={cta.href} 
-                    childrenClassName="uppercase px-3 py-2 bg-indigo-600 hover:bg-indigo-800 rounded-3xl block text-indigo-100 hover:text-indigo-50 transition-all duration-500" 
-                    childrenText={cta.text} 
-                    variants={variantCtaLetters()}
-                />
-            </motion.div>
+            <Paragraph 
+                className="text-indigo-400 text-lg md:text-3xl lg:text-4xl uppercase mt-8 md:mt-11 lg:mt-20 md:w-3/4" 
+                text={ subtitle } 
+                delay={0.25} 
+            />
+            <Paragraph 
+                className="mt-12 md:mt-16 text-indigo-200 text-base md:text-2xl lg:text-3xl md:w-1/2 md:mr-auto" 
+                delay={0.5} 
+                text={ description } 
+            />     
+            <CallToAction href={ cta.href }  text={ cta.text } />
             <ScrollDown text={"Scroll to explore"} onComplete = { () => setIsComplete(true) }/>
         </Section>
         { isComplete && 
             <>
-                <Section className="bg-black py-16">
-                    <Title color="text-indigo-600" text={secondSection.title[0]} underlined={false} />  
+                <Section className="bg-black py-16 md:py-28">
+                    <Title color="text-indigo-600" margin='mb-1' text={secondSection.title[0]} underlined={false} />  
                     <Title color="text-indigo-600" colorUnderline={'from-indigo-700 via-indigo-700/60'} text={secondSection.title[1]} />                  
-                    <Paragraph delay={0.3} text={ secondSection.description[0] } className="mt-8 text-indigo-300 text-lg md:text-2xl md:w-2/3" />    
-                    <Paragraph delay={0.3} text={ secondSection.description[1] } className="text-indigo-300 text-lg md:text-2xl md:w-2/3" /> 
-                    <Paragraph delay={0.3} text={ secondSection.description[2] } className="text-indigo-300 text-lg md:text-2xl md:w-2/3" /> 
+                    <Paragraph delay={0.3} text={ secondSection.description[0] } className="mt-8 text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3 lg:w-4/5" />    
+                    <Paragraph delay={0.3} text={ secondSection.description[1] } className="text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3 lg:w-4/5" /> 
+                    <Paragraph delay={0.3} text={ secondSection.description[2] } className="text-indigo-300 text-lg md:text-2xl lg:text-3xl md:w-2/3 lg:w-4/5" /> 
                     <Video src={video} posterPath={image.path} />
                 </Section>     
                 <Section className=" py-16 next__project">
                     <Link href={ `/works/${cta.nextId}` } passHref  scroll={false}>
                         <a className="overflow-hidden outline-none" >
-                            <Title color="text-indigo-600" text={'Next'} fontSize="text-4xl md:text-5xl" underlined={false} />
-                            <Paragraph delay={0.3} text={ cta.next } className="mt-4 text-indigo-300 text-lg md:text-2xl" />  
+                            <Title margin="mb-0" color="text-indigo-600" text={'Next'} fontSize="text-4xl md:text-5xl lg:text-6xl" underlined={false} />
+                            <Paragraph delay={0.3} text={ cta.next } className="mt-4 md:mt-6 lg:mt-10 text-indigo-300 text-lg md:text-2xl lg:text-3xl" />  
                         </a>
                     </Link>                  
                 </Section>
